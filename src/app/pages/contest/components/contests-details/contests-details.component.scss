@@ -1,0 +1,66 @@
+@use "../../../../../styles/breakpoints" as *;
+
+.card {
+  width: 100%;
+
+  &::ng-deep .p-card-title {
+    color: var(--p-slate-700);
+    font-weight: 600;
+    font-size: 1.2rem;
+    margin-bottom: 0.5rem;
+
+    @media (prefers-color-scheme: dark) {
+      color: var(--p-slate-50);
+    }
+  }
+}
+
+.contest__details {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+  flex-direction: column;
+  gap: 2rem;
+  width: 100%;
+  margin-top: 0.5rem;
+  
+
+  .contest__details--img {
+    height: 25vh;
+    max-width: 100%;
+    margin: 0 auto;
+  }
+
+  .contest__details--card {
+    flex: 1;
+    min-width: 0;
+
+    p {
+      margin-top: 0;
+    }
+    span {
+      font-weight: 600;
+    }
+  }
+
+  img {
+    max-height: 100%;
+    max-width: 100%;
+    object-fit: cover;
+    vertical-align: bottom;
+
+    @media (prefers-color-scheme: dark) {
+        background-color: white;
+    }
+  }
+
+  @include media($sm) {
+    flex-direction: row;
+
+    .contest__details--img {
+      margin: 0;
+      max-width: 250px;
+      flex-shrink: 1;
+    }
+  }
+}

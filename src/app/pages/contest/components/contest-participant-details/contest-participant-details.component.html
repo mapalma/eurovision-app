@@ -1,0 +1,29 @@
+<p><strong>Artist: </strong>{{performance.artist}}</p>
+<p><strong>Song: </strong>{{performance.song}}</p>
+<p><strong>Country: </strong> {{countries[performance.country]}}</p>
+<p-accordion [value]="0">
+@for(score of performance.scores; track score.name; let idx = $index ){
+    <p-accordion-panel [value]="idx">
+        <p-accordion-header>{{score.name.toUpperCase()}} {{score.points}}</p-accordion-header>
+        <p-accordion-content>
+            @if(score.votes){
+            <p-table [value]="objectToArray(score.votes)" [scrollable]="true" sortField="value" [sortOrder]="-1"
+            scrollHeight="300px" class="mt-4 contest__votes-table" >
+                <ng-template #header>
+                    <tr>
+                        <th class="text-xs">Country</th>
+                        <th pSortableColumn="value" class="w-3 text-xs text-right">Points <p-sortIcon field="value"></p-sortIcon></th>
+                    </tr>
+                </ng-template>
+                <ng-template #body let-vote>
+                    <tr>
+                        <td class="text-xs">{{ countries[vote.key] }}</td>
+                        <td class="text-xs text-right">{{ vote.value }}</td>
+                    </tr>
+                </ng-template>
+            </p-table>
+            }
+            </p-accordion-content>
+    </p-accordion-panel>
+}
+</p-accordion>

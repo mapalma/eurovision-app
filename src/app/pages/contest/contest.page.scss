@@ -1,0 +1,14 @@
+
+:host ::ng-deep .p-table {
+  font-family: 'Figtree', sans-serif;
+  border-radius: 10px;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+}
+
+:host ::ng-deep .fi {
+  width: 24px;
+  height: 16px;
+  display: inline-block;
+  margin-right: 0.5rem;
+  vertical-align: middle;
+}

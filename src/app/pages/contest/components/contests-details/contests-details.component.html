@@ -1,0 +1,30 @@
+<p-card header="About this Edition" role="region" class="card">
+    <div class="contest__details">
+        <div class="contest__details--img">
+            <img [src]="contestDetails().logoUrl" />
+        </div>
+        <div class="contest__details--card">
+            <div>
+                <p>
+                    <span>Broadcasters: </span>{{contestDetails().broadcasters}}
+                </p>
+                <p>
+                    <span>Presenters: </span>{{contestDetails().presenters}}
+                </p>
+
+                <p>
+                    <span>Arena: </span>{{contestDetails().arena}}
+                </p>
+                <p><span>Country: </span>{{countries[contestDetails().country]}}</p>
+                @if(contestDetails().intendedCountry) {
+                <p><span>Intended Country: </span>{{
+                    countries[contestDetails().intendedCountry || 0]}}</p>
+                }
+                @if(contestDetails().slogan) {
+                <p><span>Slogan: </span>{{contestDetails().slogan}}</p>
+                }
+            </div>
+        </div>
+
+    </div>
+</p-card>

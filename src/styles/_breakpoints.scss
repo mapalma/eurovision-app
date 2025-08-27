@@ -1,0 +1,22 @@
+//primeflex variables
+//$sm, $md, $lg, $xl, $gutter, $fieldMargin, $spacer
+
+$sm: 576px;
+$md: 768px;
+$lg: 992px;
+$xl: 1200px;
+
+@mixin media($breakpoint) {
+  @if $breakpoint == $sm {
+    @media screen and (min-width: $sm) { @content; }
+  }
+  @else if $breakpoint == $md {
+    @media screen and (min-width: $md) { @content; }
+  }
+  @else if $breakpoint == $lg {
+    @media screen and (min-width: $lg) { @content; }
+  }
+  @else if $breakpoint == $xl {
+    @media screen and (min-width: $xl) { @content; }
+  }
+}

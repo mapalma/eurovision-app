@@ -1,0 +1,51 @@
+@if(validRounds().length && tabsVisible()){
+    <p-tabs [value]="activeTab()">
+                <p-tablist>
+                    @for (round of validRounds(); track round.name; let idx = $index ) {
+                        <p-tab [value]="idx">{{round.name}}</p-tab>
+                    }
+                </p-tablist>
+                <p-tabpanels>
+                @for (round of validRounds(); track round.name; let idx = $index ) {
+                    <p-tabpanel [value]="idx"> 
+                        <p-table class="p-datatable" [value]="round.performances!" responsiveLayout="scroll" 
+                        selectionMode="single" sortField="totalPoints" [paginator]="true" [sortOrder]="-1" stripedRows [rows]="10">
+                            <ng-template #header>
+                                <tr>
+                                    <th class="w-3rem text-right text-sm md:text-base">#</th>
+                                    <th class="text-sm md:text-base">Country</th>
+                                    <th class="text-sm md:text-base">Artist</th>
+                                    <th class="text-sm md:text-base">Song</th>
+                                   @if(round.performances![0].juryPoints && round.performances![0].publicPoints ) {
+                                        <th class="text-right text-sm md:text-base" pSortableColumn="publicPoints">Public <p-sortIcon field="publicPoints" /></th>
+                                        <th class="text-right text-sm md:text-base" width="100px"  pSortableColumn="juryPoints">Jury<p-sortIcon field="juryPoints" /></th>
+                                   }
+                                   
+                                    <th class="text-right text-sm md:text-base" pSortableColumn="totalPoints">Total <p-sortIcon field="totalPoints" /></th>
+                                </tr>
+                            </ng-template>
+                            <ng-template #body let-performance let-rowIndex="rowIndex">
+                                <tr (click)="onSelectRow(performance)">
+                                    <td class="text-right text-sm md:text-base">{{performance.contestantId + 1}}</td>
+                                    <td class="text-sm md:text-base"><span class="hidden md:inline-block fi fis {{ 'fi-' + performance.country.toLowerCase() }}"></span>{{countries[performance.country]}}</td>
+                                    <td class="text-sm md:text-base">{{ performance.artist}}</td>
+                                    <td class="text-sm md:text-base">{{ performance.song }}</td>
+                                    @if(performance.scores[1]){
+                                        <td class="text-right text-sm md:text-base">{{ performance.publicPoints || 0 }}</td>
+                                        <td class="text-right text-sm md:text-base">{{ performance.juryPoints || 0 }}</td>
+                                    }
+                                    <td class="text-right text-sm md:text-base"><strong>{{ performance.totalPoints || 0 }}</strong></td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </p-tabpanel>
+                }
+                </p-tabpanels>
+        </p-tabs>
+}
+@else {
+    <div class="mt-6">
+        <p>Contest cancelled</p>
+    </div>
+    
+}

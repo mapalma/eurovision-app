@@ -1,0 +1,13 @@
+header {
+    min-height: 50px;
+    background-color:  var(--p-slate-800);
+    padding: 0.75rem 1.5rem;
+
+    img {
+        max-height: 32px;
+    }
+
+    @media (prefers-color-scheme: dark) {
+        background-color: var(--p-slate-600);
+    }
+}
