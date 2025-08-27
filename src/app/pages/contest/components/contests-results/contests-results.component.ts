@@ -2,7 +2,7 @@ import { Component, computed, input, signal, effect, WritableSignal, Input } fro
 import { TableModule } from 'primeng/table';
 import { TabsModule } from 'primeng/tabs';
 import { CountryMap, PerformanceContestant, Round } from '../../../../core/models/contest';
-import { COUNTRY_CODES } from '../../../../shared/contants/country-codes';
+import { COUNTRY_CODES } from '../../../../shared/constants/country-codes';
 
 @Component({
   selector: 'app-contests-results',

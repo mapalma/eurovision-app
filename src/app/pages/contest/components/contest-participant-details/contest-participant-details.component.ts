@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
 import { ContestDetails, CountryMap, PerformanceContestant } from '../../../../core/models/contest';
-import { COUNTRY_CODES } from '../../../../shared/contants/country-codes';
+import { COUNTRY_CODES } from '../../../../shared/constants/country-codes';
 import { AccordionModule } from 'primeng/accordion';
 import { TableModule } from 'primeng/table';
 

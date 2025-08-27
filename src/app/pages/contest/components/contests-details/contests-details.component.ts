@@ -1,7 +1,7 @@
 import { Component, input } from '@angular/core';
 import { CardModule } from 'primeng/card';
 import { ContestDetails, CountryMap } from '../../../../core/models/contest';
-import { COUNTRY_CODES } from '../../../../shared/contants/country-codes';
+import { COUNTRY_CODES } from '../../../../shared/constants/country-codes';
 
 @Component({
   selector: 'app-contests-details',
