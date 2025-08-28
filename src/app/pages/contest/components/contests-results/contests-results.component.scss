@@ -5,3 +5,8 @@
 .p-datatable .p-datatable-sortable-column {
     white-space: nowrap;
 }
+
+::ng-deep .p-datatable-striped.p-datatable-hoverable .p-datatable-tbody > tr:not(.p-datatable-row-selected):hover {
+    cursor:pointer;
+    background-color: var(--p-primary-100);
+}

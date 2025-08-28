@@ -3,6 +3,7 @@
 Aplicación web desarrollada con **Angular 19** para visualizar datos utilizando [Eurovision API](https://eurovisionapi.runasp.net/) (solo GET).  
 Utiliza **signals** para gestión de estado y **PrimeNG** para la interfaz de usuario.  
 
+Puedes verla aquí:[eurovisionresults.netlify.app](https://eurovisionresults.netlify.app)
 
 ## Características
 
@@ -18,7 +19,7 @@ Utiliza **signals** para gestión de estado y **PrimeNG** para la interfaz de us
 
 1. Clonar Repositorio: 
 
-git clone https://github.com/mapalma/eurovision-app.git
+`git clone https://github.com/mapalma/eurovision-app.git`
 
 2. Instalar dependencias
 
