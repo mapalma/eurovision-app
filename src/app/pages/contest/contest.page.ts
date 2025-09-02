@@ -89,6 +89,11 @@ export class ContestPage {
     this.getContestantDataByYear(date.getFullYear());
   }
 
+  onRowSelected(performance:PerformanceContestant){
+    this.selectedPerformance.set(performance);
+    this.detailsOpen.set(true);
+  }
+
   getContestEditionDetails(data: Contest): ContestDetails {
     const { contestants, rounds, ...contestDetails } = data;
     return contestDetails;

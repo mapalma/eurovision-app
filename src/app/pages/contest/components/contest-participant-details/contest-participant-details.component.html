@@ -1,8 +1,8 @@
-<p><strong>Artist: </strong>{{performance.artist}}</p>
-<p><strong>Song: </strong>{{performance.song}}</p>
-<p><strong>Country: </strong> {{countries[performance.country]}}</p>
+<p><strong>Artist: </strong>{{performance().artist}}</p>
+<p><strong>Song: </strong>{{performance().song}}</p>
+<p><strong>Country: </strong> {{countries[performance().country]}}</p>
 <p-accordion [value]="0">
-@for(score of performance.scores; track score.name; let idx = $index ){
+@for(score of performance().scores; track score.name; let idx = $index ){
     <p-accordion-panel [value]="idx">
         <p-accordion-header>{{score.name.toUpperCase()}} {{score.points}}</p-accordion-header>
         <p-accordion-content>

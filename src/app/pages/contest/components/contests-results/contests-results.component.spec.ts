@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { ContestsResultsComponent } from './contests-results.component';
 import { mockPerformanceContestant, mockVote } from '../../../../core/services/eurovision/eurovision.service.mock';
-import { Component, input, signal } from '@angular/core';
+import { Component, input, output, signal } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { PerformanceContestant, Round } from '../../../../core/models/contest';
 import { By } from '@angular/platform-browser';
@@ -90,15 +90,16 @@ describe('ContestsResultsComponent', () => {
   });
 
   it('should set signals on selectRow', () => {
-    const mockSelectedPerformance = signal<PerformanceContestant | null>(null);
-    const mockDetailsOpen = signal(false);
+    const mockPerformance: PerformanceContestant = mockPerformanceContestant;
+    let emittedPerformance: PerformanceContestant | undefined;
 
-    (component as any).selectedPerformance = () => mockSelectedPerformance;
-    (component as any).detailsOpen = () => mockDetailsOpen;
+    component.rowSelected.subscribe(value => {
+      emittedPerformance = value
+    });
 
-    component.onSelectRow(mockPerformanceContestant);
+    component.onSelectRow(mockPerformance);
+
+    expect(emittedPerformance).toBe(mockPerformanceContestant);
     
-    expect(mockSelectedPerformance()).toBe(mockPerformanceContestant);
-    expect(mockDetailsOpen()).toBeTrue();
   });
 });

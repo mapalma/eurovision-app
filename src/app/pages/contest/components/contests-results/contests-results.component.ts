@@ -1,4 +1,4 @@
-import { Component, computed, input, signal, effect, WritableSignal, Input } from '@angular/core';
+import { Component, computed, input, output, signal, effect, WritableSignal, Input, ModelSignal, model } from '@angular/core';
 import { TableModule } from 'primeng/table';
 import { TabsModule } from 'primeng/tabs';
 import { CountryMap, PerformanceContestant, Round } from '../../../../core/models/contest';
@@ -17,8 +17,7 @@ export class ContestsResultsComponent {
   validRounds = computed(() => this.rounds()?.filter(round => round.performances));
   activeTab = signal(0);
   tabsVisible = signal(true);
-  selectedPerformance = input<WritableSignal<PerformanceContestant | null>>();
-  detailsOpen = input<WritableSignal<boolean>>();
+  rowSelected = output<PerformanceContestant>();
   countries: CountryMap = COUNTRY_CODES;
 
  constructor() {
@@ -32,13 +31,6 @@ export class ContestsResultsComponent {
   } 
 
   onSelectRow(performance: PerformanceContestant) {
-    const selectedSignal = this.selectedPerformance();
-    const detailsSignal = this.detailsOpen();
-
-    if (selectedSignal && detailsSignal) {
-      selectedSignal.set(performance);
-      detailsSignal.set(true);
-    }
+    this.rowSelected.emit(performance);  
   }
-
 }

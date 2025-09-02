@@ -1,7 +1,7 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { ContestPage } from './contest.page';
-import { mockContest } from '../../core/services/eurovision/eurovision.service.mock';
+import { mockContest, mockPerformanceContestant } from '../../core/services/eurovision/eurovision.service.mock';
 import { of } from 'rxjs'; 
 import { EurovisionService } from '../../core/services/eurovision/eurovision.service';
 
@@ -61,5 +61,12 @@ describe('ContestPage', () => {
      component.onCloseDetails();
      expect(component.detailsOpen()).toBeFalse();
      expect(component.contentDrawerReady()).toBeFalse();
+  });
+
+  it('should update signals when row is selected', () => {
+    const mockPerformance = mockPerformanceContestant;
+     component.onRowSelected(mockPerformance);
+     expect(component.selectedPerformance()).toEqual(mockPerformance);
+     expect(component.detailsOpen()).toBeTrue();
   });
 });

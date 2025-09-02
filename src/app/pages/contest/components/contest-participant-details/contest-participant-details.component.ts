@@ -1,4 +1,4 @@
-import { Component, Input } from '@angular/core';
+import { Component, input } from '@angular/core';
 import { ContestDetails, CountryMap, PerformanceContestant } from '../../../../core/models/contest';
 import { COUNTRY_CODES } from '../../../../shared/constants/country-codes';
 import { AccordionModule } from 'primeng/accordion';
@@ -11,8 +11,7 @@ import { TableModule } from 'primeng/table';
   styleUrl: './contest-participant-details.component.scss'
 })
 export class ContestParticipantDetailsComponent {
-  @Input() performance!: PerformanceContestant;
-  @Input() contestDetails!: ContestDetails;
+  performance = input.required<PerformanceContestant>();
   countries: CountryMap = COUNTRY_CODES;
 
 

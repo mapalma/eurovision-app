@@ -9,13 +9,12 @@
 <h1>Eurovision Song Contest {{contestDetails.city}} {{contestDetails.year}}</h1>
 <app-contests-details [contestDetails]="contestDetails" class="flex mb-3"></app-contests-details>
 <h2 class="mt-5 mb-2">Results</h2>
-<app-contests-results [rounds]="rounds" [selectedPerformance]="selectedPerformance"
-  [detailsOpen]="detailsOpen"></app-contests-results>
+<app-contests-results [rounds]="rounds" (rowSelected)="onRowSelected($event)"></app-contests-results>
 }
 
 <p-drawer [visible]="detailsOpen()" (onHide)="detailsOpen.set(false)" header="Detailed Votes" position="right" 
 class="contest__drawer">
   @if (detailsOpen() && selectedPerformance() && contentDrawerReady()) {
-    <app-contest-participant-details [contestDetails]="contestDetails" [performance]="selectedPerformance()!" />
+    <app-contest-participant-details [performance]="selectedPerformance()!" />
   }
 </p-drawer>
