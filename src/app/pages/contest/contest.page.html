@@ -14,7 +14,7 @@
 
 <p-drawer [visible]="detailsOpen()" (onHide)="detailsOpen.set(false)" header="Detailed Votes" position="right" 
 class="contest__drawer">
-  @if (detailsOpen() && selectedPerformance() && contentDrawerReady()) {
+  @if (detailsOpen() && selectedPerformance()) {
     <app-contest-participant-details [performance]="selectedPerformance()!" />
   }
 </p-drawer>

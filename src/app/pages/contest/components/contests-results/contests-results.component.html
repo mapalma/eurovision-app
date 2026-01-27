@@ -1,5 +1,5 @@
 @if(validRounds().length && tabsVisible()){
-    <p-tabs [value]="activeTab()">
+    <p-tabs [(value)]="activeTab">
                 <p-tablist>
                     @for (round of validRounds(); track round.name; let idx = $index ) {
                         <p-tab [value]="idx">{{round.name}}</p-tab>

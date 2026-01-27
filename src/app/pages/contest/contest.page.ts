@@ -1,4 +1,4 @@
-import { Component, effect, signal } from '@angular/core';
+import { Component,inject, signal } from '@angular/core';
 import { EurovisionService } from '../../core/services/eurovision/eurovision.service';
 import { DatePickerModule } from 'primeng/datepicker';
 import { FloatLabelModule } from 'primeng/floatlabel';
@@ -32,31 +32,18 @@ import { ContestParticipantDetailsComponent } from './components/contest-partici
   styleUrl: './contest.page.scss',
 })
 export class ContestPage {
+  readonly euroService= inject(EurovisionService);
   contestants: Contestant[] = [];
   contestDetails: ContestDetails = {} as ContestDetails;
   rounds: Round[] = [];
   validRounds: Round[] = [];
-  loading = true;
   currentYear!: Date;
   minYear: Date =  new Date('1956');
   selectedYear!: Date;
   selectedPerformance = signal<PerformanceContestant | null>(null);
   detailsOpen = signal(false);
-  contentDrawerReady = signal(false);
-
-  constructor(private euroService: EurovisionService) {
-    effect(() => {
-      if (this.detailsOpen()) {
-        this.contentDrawerReady.set(false);
-        setTimeout(() => {
-          this.contentDrawerReady.set(true);
-        }, 50); 
-      } else {
-        this.contentDrawerReady.set(false);
-      }
-    });
-
-  }
+ 
+  constructor() {}
 
   ngOnInit() {
     this.currentYear = this.getCurrentContestYear(new Date());
@@ -134,7 +121,6 @@ export class ContestPage {
 
   onCloseDetails = () => {
     this.detailsOpen.set(false);
-    this.contentDrawerReady.set(false);
   };
   
 }
